@@ -63,7 +63,7 @@ public class DiffFactory {
         return create(graphFactory.createLiveGraph(oldVersion, clazz), graphFactory.createLiveGraph(currentVersion, clazz));
     }
 
-    public Diff create(ObjectGraph leftGraph, ObjectGraph rightGraph) {
+    private Diff create(ObjectGraph leftGraph, ObjectGraph rightGraph) {
         return create(leftGraph, rightGraph, Optional.<CommitMetadata>empty());
     }
 
@@ -71,7 +71,7 @@ public class DiffFactory {
         Validate.argumentsAreNotNull(leftGraph, rightGraph);
 
         GraphPair graphPair = new GraphPair(leftGraph, rightGraph);
-        return createAndAppendChanges(graphPair, Optional.<CommitMetadata>empty());
+        return createAndAppendChanges(graphPair, commitMetadata);
     }
 
     public Diff singleTerminal(GlobalId removedId, CommitMetadata commitMetadata){
@@ -161,6 +161,4 @@ public class DiffFactory {
             break;
         }
     }
-
-
 }

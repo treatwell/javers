@@ -36,7 +36,7 @@ public class ObjectGraphBuilder {
         Validate.argumentsAreNotNull(typeMapper, cdoFactory);
         this.typeMapper = typeMapper;
         this.edgeBuilder = new EdgeBuilder(typeMapper, nodeReuser, cdoFactory);
-        this.nodeReuser = new NodeReuser();
+        this.nodeReuser = nodeReuser;
     }
 
     /**
